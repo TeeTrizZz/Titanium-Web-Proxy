@@ -444,9 +444,8 @@ namespace Titanium.Web.Proxy
                         }
                     }
 
-                    var httpRemoteUri = new Uri(httpsHostName == null ? httpCmdSplit[1]
-                        : (string.Concat("https://", args.WebSession.Request.Host == null ?
-                        httpsHostName : args.WebSession.Request.Host, httpCmdSplit[1])));
+                    var httpRemoteUri = new Uri(string.Concat(httpsHostName == null ? "http://" : "https://",
+                        args.WebSession.Request.Host ?? httpsHostName, httpCmdSplit[1]));
 
                     args.WebSession.Request.RequestUri = httpRemoteUri;
 
