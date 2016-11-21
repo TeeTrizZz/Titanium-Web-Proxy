@@ -42,6 +42,9 @@ namespace Titanium.Web.Proxy.Network
 
         public CertificateMaker()
         {
+            // certificate maker does not work in Mono
+            if (Type.GetType("Mono.Runtime") != null) return;
+
             this.typeX500DN = Type.GetTypeFromProgID("X509Enrollment.CX500DistinguishedName", true);
             this.typeX509PrivateKey = Type.GetTypeFromProgID("X509Enrollment.CX509PrivateKey", true);
             this.typeOID = Type.GetTypeFromProgID("X509Enrollment.CObjectId", true);
